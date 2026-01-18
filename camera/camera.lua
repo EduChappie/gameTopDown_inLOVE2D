@@ -5,7 +5,7 @@ function camera:new()
     local self = setmetatable({}, camera)
     self.x = 0
     self.y = 0
-    self.scale = 3.5 -- tamanho do visual
+    self.scale = 6 -- tamanho do visual
 
     return self
 end

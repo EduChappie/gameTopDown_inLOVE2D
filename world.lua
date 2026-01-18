@@ -1,7 +1,7 @@
 world = {}
 
 require 'entities.player'
-require 'maps.mapateste'
+require 'maps.mapGenerator'
 require 'logics.collision'
 camera = require('camera.camera')
 
@@ -10,9 +10,9 @@ function world:load()
     cam = camera:new()
 
     player = p:new(100, 100)
-    mapateste:load()
+    mapGenerator:load()
 
-    blocks = mapateste:getBlocks()
+    blocks = mapGenerator:getBlocks()
 end
 
 function world:update(dt)
@@ -61,7 +61,7 @@ end
 function world:draw()
     cam:set()
 
-    mapateste:draw()
+    mapGenerator:draw()
     player:draw()
 
     cam:unset()

@@ -81,7 +81,7 @@ function p:new(x, y)
         self.animations.idle[dir] = 
             anim8.newAnimation(
                 self.grid.idle('1-' .. frames, row), 
-                0.4
+                0.15
                 )
         self.animations.walk[dir] = 
             anim8.newAnimation(
