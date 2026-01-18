@@ -8,23 +8,39 @@ function p:new(x, y)
     self.w = 50
     self.h = 100
     self.speed = 250
+    self.vx = 0
+    self.vy = 0
     return self
 end
 
 function p:update(dt)
-    if love.keyboard.isDown("d") then -- direita
-        self.x = self.x + self.speed * dt
+
+    self.vx = 0
+    self.vy = 0
+
+    if love.keyboard.isDown("w") then 
+        self.vy = -1 -- cima
     end
-    if love.keyboard.isDown("a") then -- esquerda
-        self.x = self.x - self.speed * dt
+    if love.keyboard.isDown("s") then 
+        self.vy = 1 -- baixo
+    end
+    if love.keyboard.isDown("a") then 
+        self.vx = -1 -- esquerda
+    end
+    if love.keyboard.isDown("d") then
+        self.vx = 1  -- direita
     end
 
-    if love.keyboard.isDown("w") then -- direita
-        self.y = self.y - self.speed * dt
+    -- normaliza diagonal? aparentemente tem um 
+    -- problema de colisão com a diagonal aqui, por isso
+    -- esse código existe, não me julguem, mas é do
+    -- chatGPT
+    if self.vx ~= 0 and self.vy ~= 0 then
+        local len = math.sqrt(self.vx*self.vx + self.vy*self.vy)
+        self.vx = self.vx / len
+        self.vy = self.vy / len
     end
-    if love.keyboard.isDown("s") then -- esquerda
-        self.y = self.y + self.speed * dt
-    end
+
 end
 
 function p:draw()
