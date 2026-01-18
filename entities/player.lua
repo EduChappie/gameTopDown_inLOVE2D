@@ -33,9 +33,9 @@ function p:new(x, y)
     local self = setmetatable({}, p)
     self.x = x
     self.y = y
-    self.w = 50
-    self.h = 100
-    self.speed = 250
+    self.w = 16
+    self.h = 8
+    self.speed = 150
     self.vx = 0
     self.vy = 0
     self.state = "idle"
@@ -81,12 +81,12 @@ function p:new(x, y)
         self.animations.idle[dir] = 
             anim8.newAnimation(
                 self.grid.idle('1-' .. frames, row), 
-                0.2
+                0.4
                 )
         self.animations.walk[dir] = 
             anim8.newAnimation(
                 self.grid.walk('1-6', row),
-                0.1
+                0.2
             )
     end
     
@@ -138,7 +138,12 @@ function p:draw()
     local anim = self.animations[self.state][self.direction]
     local state = self.state
 
-    anim:draw(self.images.shadow[state], self.x, self.y)
-    anim:draw(self.images.body[state], self.x, self.y)
-    anim:draw(self.images.head[state], self.x, self.y)
+    -- sprite offset
+    local OffX = self.w*1.5
+    local OffY = self.h*5
+
+    anim:draw(self.images.shadow[state], self.x - OffX, self.y - OffY)
+    anim:draw(self.images.body[state], self.x - OffX, self.y - OffY)
+    anim:draw(self.images.head[state], self.x - OffX, self.y - OffY)
+
 end

@@ -1,17 +1,18 @@
 world = {}
 
 require 'entities.player'
-require 'maps.map01'
+require 'maps.mapateste'
 require 'logics.collision'
 camera = require('camera.camera')
 
 function world:load()
+    love.graphics.setDefaultFilter("nearest", "nearest")
     cam = camera:new()
 
-    player = p:new(20, 20)
-    map01:load()
+    player = p:new(100, 100)
+    mapateste:load()
 
-    blocks = map01:getBlocks()
+    blocks = mapateste:getBlocks()
 end
 
 function world:update(dt)
@@ -60,7 +61,7 @@ end
 function world:draw()
     cam:set()
 
-    map01:draw()
+    mapateste:draw()
     player:draw()
 
     cam:unset()
