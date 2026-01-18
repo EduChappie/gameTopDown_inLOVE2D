@@ -1,32 +1,33 @@
 p = {}
+p.__index = p
 
-function p:load()
-    player = {
-        x = 50,
-        y = 50,
-        w = 50,
-        h = 100,
-        speed = 200,
-    }
+function p:new(x, y)
+    local self = setmetatable({}, p)
+    self.x = x
+    self.y = y
+    self.w = 50
+    self.h = 100
+    self.speed = 250
+    return self
 end
 
 function p:update(dt)
     if love.keyboard.isDown("d") then -- direita
-        player.x = player.x + player.speed * dt
+        self.x = self.x + self.speed * dt
     end
     if love.keyboard.isDown("a") then -- esquerda
-        player.x = player.x - player.speed * dt
+        self.x = self.x - self.speed * dt
     end
 
     if love.keyboard.isDown("w") then -- direita
-        player.y = player.y - player.speed * dt
+        self.y = self.y - self.speed * dt
     end
     if love.keyboard.isDown("s") then -- esquerda
-        player.y = player.y + player.speed * dt
+        self.y = self.y + self.speed * dt
     end
 end
 
 function p:draw()
     love.graphics.setColor(100, 100, 100)
-    love.graphics.rectangle("fill", player.x, player.y, player.w, player.h)
+    love.graphics.rectangle("fill", self.x, self.y, self.w, self.h)
 end

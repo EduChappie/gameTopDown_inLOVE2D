@@ -11,7 +11,6 @@ function block:new(px, py, pw, ph)
 end
 
 function block:update(dt)
-    -- possível função com colisão
 end
 
 function block:draw() -- printar esse bloco
