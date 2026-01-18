@@ -1,16 +1,21 @@
 world = {}
 
-require 'entitys.player'
+require 'entities.player'
 require 'maps.map01'
 require 'logics.collision'
+camera = require('camera.camera')
 
 function world:load()
+    cam = camera:new()
+
     player = p:new(20, 20)
     map01:load()
+
     blocks = map01:getBlocks()
 end
 
 function world:update(dt)
+
     player:update(dt)
 
     local nextX = player.x + player.vx * player.speed * dt
@@ -47,11 +52,18 @@ function world:update(dt)
     if canMoveY then
         player.y = nextY
     end
+
+    cam.x = player.x + player.w /2
+    cam.y = player.y + player.h /2
 end
 
 function world:draw()
-    player:draw()
+    cam:set()
+
     map01:draw()
+    player:draw()
+
+    cam:unset()
 end
 
 return world
