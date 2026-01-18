@@ -1,6 +1,6 @@
 map01 = {}
 
-require './objects/blockGenerator'
+require 'objects.blockGenerator'
 
 function map01:load()
     self.blocks = {}

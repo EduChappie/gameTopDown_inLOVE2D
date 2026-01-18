@@ -1,8 +1,8 @@
 world = {}
 
-require 'characters/player'
-require 'maps/map01'
-require 'logics/collision'
+require 'entitys.player'
+require 'maps.map01'
+require 'logics.collision'
 
 function world:load()
     player = p:new(20, 20)
