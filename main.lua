@@ -1,24 +1,13 @@
-require 'characters/player'
-require 'maps/map01'
-require 'logics/collision'
+require 'world'
 
 function love.load()
-    player = p:new(20, 20)
-    map01:load()
-    blocks = map01:getBlocks()
+    world:load()
 end
 
 function love.update(dt)
-    player:update(dt)
-    
-    for _, b in ipairs(blocks) do
-        if checkCollision.AB(player, b) then
-            print("colidiu")
-        end
-    end
+    world:update(dt)
 end
 
 function love.draw()
-    player:draw()
-    map01:draw()
+    world:draw()
 end
