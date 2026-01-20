@@ -4,10 +4,15 @@ require 'entities.player'
 require 'maps.mapGenerator'
 require 'logics.collision'
 require 'camera.filtros.penumbra'
+require 'camera.filtros.vhs'
 camera = require('camera.camera')
 
 function world:load()
+    screenW, screenH = love.graphics.getDimensions()
+    canvas = love.graphics.newCanvas(screenW, screenH)
+
     penumbra:load()
+    vhs:load()
     
     love.graphics.setDefaultFilter("nearest", "nearest") -- código pra limpar pixelart
     cam = camera:new()
@@ -20,6 +25,8 @@ function world:load()
 end
 
 function world:update(dt)
+
+    vhs:update(dt)
 
     player:update(dt)
 
@@ -85,15 +92,23 @@ function world:update(dt)
 end
 
 function world:draw()
+    love.graphics.setCanvas(canvas)
+    love.graphics.clear()
+
     cam:set()
 
     mapGenerator:draw()
     player:draw()
 
     cam:unset()
+    
 
     -- filtro de câmeras
+    love.graphics.setCanvas()
+    vhs:draw(canvas)
     penumbra:draw()
+
+    
 end
 
 return world
