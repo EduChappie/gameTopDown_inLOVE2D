@@ -6,6 +6,8 @@ require 'logics.collision'
 camera = require('camera.camera')
 
 function world:load()
+
+    
     love.graphics.setDefaultFilter("nearest", "nearest")
     cam = camera:new()
 
