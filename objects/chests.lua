@@ -1,13 +1,15 @@
 chest = {}
 chest.__index = chest
 
-function chest:new(x, y, item)
+function chest:new(gid, x, y, w, h, r, item)
     local self = setmetatable({}, chest)
     self.x = x
     self.y = y
-    self.w = 14
-    self.h = 14
-    self.r = 15 -- raio de colisão
+    self.w = w
+    self.h = h
+    self.r = r -- raio de colisão
+    self.gid = gid
+    self.visible = true
     self.locked = true
     self.item = item
 

@@ -25,7 +25,7 @@ return {
       draworder = "topdown",
       id = 8,
       name = "baú",
-      class = "",
+      class = "chest",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -41,12 +41,14 @@ return {
           shape = "rectangle",
           x = 48,
           y = 288,
-          width = 16,
-          height = 16,
+          width = 14,
+          height = 10,
+          
           rotation = 0,
           gid = 85,
           visible = true,
           properties = {
+            raio = 15,
             item = { 
               name = "Lâmina estrelada",
               type = "weapon",
@@ -62,12 +64,14 @@ return {
           shape = "rectangle",
           x = 383,
           y = 175,
-          width = 16,
-          height = 16,
+          
+          width = 14,
+          height = 10,
           rotation = 0,
           gid = 85,
           visible = true,
           properties = {
+            raio = 15,
             item = {
               name = "Poção de Vida",
               type = "utils",	
