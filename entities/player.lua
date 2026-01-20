@@ -35,7 +35,7 @@ function p:new(x, y)
     self.y = y
     self.w = 16
     self.h = 8
-    self.speed = 150
+    self.speed = 100
     self.vx = 0
     self.vy = 0
     self.state = "idle"
@@ -81,12 +81,12 @@ function p:new(x, y)
         self.animations.idle[dir] = 
             anim8.newAnimation(
                 self.grid.idle('1-' .. frames, row), 
-                0.15
+                0.3
                 )
         self.animations.walk[dir] = 
             anim8.newAnimation(
                 self.grid.walk('1-6', row),
-                0.2
+                0.25
             )
     end
     
