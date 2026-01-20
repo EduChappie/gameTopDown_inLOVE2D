@@ -8,8 +8,6 @@ require 'camera.filtros.vhs'
 camera = require('camera.camera')
 
 function world:load()
-    screenW, screenH = love.graphics.getDimensions()
-    canvas = love.graphics.newCanvas(screenW, screenH)
 
     penumbra:load()
     vhs:load()
@@ -92,8 +90,8 @@ function world:update(dt)
 end
 
 function world:draw()
-    love.graphics.setCanvas(canvas)
-    love.graphics.clear()
+
+    vhs:setIn()
 
     cam:set()
 
@@ -102,10 +100,8 @@ function world:draw()
 
     cam:unset()
     
-
     -- filtro de câmeras
-    love.graphics.setCanvas()
-    vhs:draw(canvas)
+    vhs:setOut()
     penumbra:draw()
 
     

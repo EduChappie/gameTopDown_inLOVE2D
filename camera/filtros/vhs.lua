@@ -1,6 +1,9 @@
 vhs = {}
 
 function vhs:load()
+    screenW, screenH = love.graphics.getDimensions()
+    self.canvas = love.graphics.newCanvas(screenW, screenH)
+
     self.shader = love.graphics.newShader("assets/filter/vhs.glsl")
     self.enabled = true
     self.time = 0
@@ -16,12 +19,19 @@ function vhs:update(dt)
 
 end
 
-function vhs:draw(canvas)
+function vhs:setIn()
+    love.graphics.setCanvas(self.canvas)
+    love.graphics.clear()
+end
+
+function vhs:setOut()
+    love.graphics.setCanvas()
+
     if self.enabled then
         love.graphics.setShader(self.shader)
     end
 
-    love.graphics.draw(canvas, 0, 0)
+    love.graphics.draw(self.canvas, 0, 0)
     love.graphics.setShader()
 end
 
