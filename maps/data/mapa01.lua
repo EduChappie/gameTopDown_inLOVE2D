@@ -115,7 +115,7 @@ return {
       width = 42,
       height = 24,
       id = 5,
-      name = "báu",
+      name = "baú",
       class = "",
       visible = true,
       opacity = 1,

@@ -33,13 +33,14 @@ function p:new(x, y)
     local self = setmetatable({}, p)
     self.x = x
     self.y = y
-    self.w = 16
+    self.w = 14
     self.h = 8
     self.speed = 100
     self.vx = 0
     self.vy = 0
     self.state = "idle"
     self.direction = "down"
+    self.inventory = {}
 
     -- imagens
     self.images = {
@@ -139,8 +140,11 @@ function p:draw()
     local state = self.state
 
     -- sprite offset
-    local OffX = self.w*1.5
+    local OffX = self.w*1.76
     local OffY = self.h*5
+
+    --debug player
+    love.graphics.rectangle('line', self.x, self.y, self.w, self.h)
 
     anim:draw(self.images.shadow[state], self.x - OffX, self.y - OffY)
     anim:draw(self.images.body[state], self.x - OffX, self.y - OffY)

@@ -12,6 +12,7 @@ function world:load()
     player = p:new(100, 100)
     mapGenerator:load()
 
+    chests = mapGenerator:getChests()
     blocks = mapGenerator:getBlocks()
 end
 
@@ -34,6 +35,17 @@ function world:update(dt)
         end
     end
 
+    -- teste de eixoX para colisão com baú
+    for _, c in ipairs(chests) do
+        if checkCollision.AB(
+            { x = nextX, y = player.y, w = player.w, h = player.h },
+            c
+        ) then
+            canMoveX = false
+            break
+        end
+    end
+
     if canMoveX then
         player.x = nextX
     end
@@ -44,6 +56,17 @@ function world:update(dt)
         if checkCollision.AB(
             { x = player.x, y = nextY, w = player.w, h = player.h },
             b
+        ) then
+            canMoveY = false
+            break
+        end
+    end
+
+    -- teste de eixoY, para colisão com baú
+    for _, c in ipairs(chests) do
+        if checkCollision.AB(
+            { x = player.x, y = nextY, w = player.w, h = player.h },
+            c
         ) then
             canMoveY = false
             break

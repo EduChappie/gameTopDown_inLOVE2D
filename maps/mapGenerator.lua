@@ -1,6 +1,7 @@
 mapGenerator = {}
 
-local Block = require("objects.blockGenerator")
+local block = require("objects.blockGenerator")
+local chest = require("objects.chests")
 local mapa = require("maps.data.mapa01")
 
 -- ================================
@@ -27,12 +28,10 @@ local quadCache = {}
 -- ================================
 function mapGenerator:load()
     self.blocks = {}
+    self.chests = {}
 
     -- ================================
-    -- 1. CACHE DE QUADS (UMA VEZ)
-    -- em termos mais simples, ele faz a verificação da localização de cada bloco no inicio
-    -- somente 1 vez, para depois depois ele só usufluir desses dados,
-    -- dando uma boa folga no sitema
+    -- 1. CACHE DE QUADS
     -- ================================
     for _, layer in ipairs(mapa.layers) do
         if layer.type == "tilelayer" then
@@ -67,7 +66,7 @@ function mapGenerator:load()
     end
 
     -- ================================
-    -- 3. MARCA TILES SÓLIDOS
+    -- 3. MARCA PAREDES
     -- ================================
     for _, layer in ipairs(mapa.layers) do
         if layer.name == "paredes" then
@@ -84,7 +83,7 @@ function mapGenerator:load()
     end
 
     -- ================================
-    -- 4. MERGE HORIZONTAL + VERTICAL
+    -- 4. MERGE DE COLISÃO
     -- ================================
     for y = 0, mapH - 1 do
         for x = 0, mapW - 1 do
@@ -108,7 +107,6 @@ function mapGenerator:load()
                             break
                         end
                     end
-
                     if canExpand then
                         height = height + 1
                     end
@@ -132,6 +130,34 @@ function mapGenerator:load()
             end
         end
     end
+
+    -- ================================
+    -- 5. LEITURA DOS BAÚS (TILE LAYER)
+    -- ================================
+    for _, layer in ipairs(mapa.layers) do
+        if layer.type == "tilelayer" and layer.name == "baú" then
+            local index = 1
+            for y = 0, mapH - 1 do
+                for x = 0, mapW - 1 do
+                    local tileId = layer.data[index]
+
+                    if tileId ~= 0 then
+                        -- item pode ser definido por tileId futuramente
+                        table.insert(
+                            self.chests,
+                            chest:new(
+                                x * tileW,
+                                y * tileH,
+                                nil
+                            )
+                        )
+                    end
+
+                    index = index + 1
+                end
+            end
+        end
+    end
 end
 
 -- ================================
@@ -141,39 +167,32 @@ function mapGenerator:update(dt)
 end
 
 -- ================================
--- DRAW (MAPA + DEBUG)
+-- DRAW
 -- ================================
 function mapGenerator:draw()
-    -- desenha layers visuais
     for _, layer in ipairs(mapa.layers) do
-        if layer.type == "tilelayer"
-        and layer.visible then
-
+        if layer.type == "tilelayer" and layer.visible then
             local index = 1
             for y = 0, mapH - 1 do
                 for x = 0, mapW - 1 do
                     local tileId = layer.data[index]
-
                     if tileId ~= 0 then
-                        local quad = quadCache[tileId]
-
                         love.graphics.draw(
                             tileset,
-                            quad,
+                            quadCache[tileId],
                             x * tileW,
                             y * tileH
                         )
                     end
-
                     index = index + 1
                 end
             end
         end
     end
 
-    -- DEBUG: colisão
-    --for _, b in ipairs(self.blocks) do
-        --b:draw()
+    -- DEBUG BAÚS - isso que deixo com o vermelho envolta
+    --for _, c in ipairs(self.chests) do
+        --c:draw()
     --end
 end
 
@@ -182,6 +201,10 @@ end
 -- ================================
 function mapGenerator:getBlocks()
     return self.blocks
+end
+
+function mapGenerator:getChests()
+    return self.chests
 end
 
 return mapGenerator
