@@ -18,8 +18,8 @@ function camera:set()
     local py = -self.y + (love.graphics.getHeight() / (2 * self.scale))
 
     love.graphics.translate(
-        px-5,
-        py+5
+        px-5, -- 5 de marge de erro, pois está um pouco torto comparado com o pesonagem
+        py+5   -- é o offSet padrão
     )
 end
 

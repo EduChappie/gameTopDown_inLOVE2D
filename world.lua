@@ -3,12 +3,13 @@ world = {}
 require 'entities.player'
 require 'maps.mapGenerator'
 require 'logics.collision'
+require 'camera.filtros.penumbra'
 camera = require('camera.camera')
 
 function world:load()
-    penumbra = love.graphics.newImage("assets/filter/image/penumbra.png")
-
-    love.graphics.setDefaultFilter("nearest", "nearest")
+    penumbra:load()
+    
+    love.graphics.setDefaultFilter("nearest", "nearest") -- código pra limpar pixelart
     cam = camera:new()
 
     player = p:new(100, 100)
@@ -91,24 +92,8 @@ function world:draw()
 
     cam:unset()
 
-    --local offxp = player.h
-    --local offyp = player.w
-
-    --if player.direction == "down" then
-        -- down
-    --    offyp = player.h*4
-    --end if player.direction == "left" then
-        -- left
-        --offxp = - player.w*4
-    --end if player.direction == "right" then
-        -- right
-        --offxp = player.w*4
-    --end if player.direction == "up" then
-        -- up
-        --offyp = - player.h*8
-    --end
-    
-    love.graphics.draw(penumbra, 0, 0)
+    -- filtro de câmeras
+    penumbra:draw()
 end
 
 return world
