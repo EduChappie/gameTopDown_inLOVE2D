@@ -13,9 +13,13 @@ end
 function camera:set()
     love.graphics.push()
     love.graphics.scale(self.scale)
+
+    local px = -self.x + (love.graphics.getWidth() / (2 * self.scale))
+    local py = -self.y + (love.graphics.getHeight() / (2 * self.scale))
+
     love.graphics.translate(
-        -self.x + (love.graphics.getWidth()  / (2 * self.scale)),
-        -self.y + (love.graphics.getHeight() / (2 * self.scale))
+        px-5,
+        py+5
     )
 end
 
