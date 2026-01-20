@@ -134,30 +134,8 @@ function mapGenerator:load()
     -- ================================
     -- 5. LEITURA DOS BAÚS (TILE LAYER)
     -- ================================
-    for _, layer in ipairs(mapa.layers) do
-        if layer.type == "tilelayer" and layer.name == "baú" then
-            local index = 1
-            for y = 0, mapH - 1 do
-                for x = 0, mapW - 1 do
-                    local tileId = layer.data[index]
-
-                    if tileId ~= 0 then
-                        -- item pode ser definido por tileId futuramente
-                        table.insert(
-                            self.chests,
-                            chest:new(
-                                x * tileW,
-                                y * tileH,
-                                nil
-                            )
-                        )
-                    end
-
-                    index = index + 1
-                end
-            end
-        end
-    end
+    -- a fazer!!!!
+    
 end
 
 -- ================================
