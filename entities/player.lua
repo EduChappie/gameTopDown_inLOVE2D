@@ -35,9 +35,10 @@ function p:new(x, y)
     self.y = y
     self.w = 14
     self.h = 8
-    self.speed = 100
+    self.speed = 50
     self.vx = 0
     self.vy = 0
+    self.armed = false
     self.state = "idle"
     self.direction = "down"
     self.inventory = {}
@@ -55,6 +56,14 @@ function p:new(x, y)
         shadow = {
             idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle1_shadow.png"),
             walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk1_shadow.png")
+        },
+        sword_front = {
+            idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle4_sword_front.png"),
+            walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk4_sword_front.png")
+        },
+        sword_back = {
+            idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle2_sword_back.png"),
+            walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk2_sword_back.png")
         }
     }
     -- grid 32, 32
@@ -147,7 +156,15 @@ function p:draw()
     --love.graphics.rectangle('line', self.x, self.y, self.w, self.h)
 
     anim:draw(self.images.shadow[state], self.x - OffX, self.y - OffY)
-    anim:draw(self.images.body[state], self.x - OffX, self.y - OffY)
+
+    if self.armed then
+        anim:draw(self.images.sword_back[state], self.x - OffX, self.y - OffY)
+        anim:draw(self.images.body[state], self.x - OffX, self.y - OffY)
+        anim:draw(self.images.sword_front[state], self.x - OffX, self.y - OffY)
+    else
+        anim:draw(self.images.body[state], self.x - OffX, self.y - OffY)
+    end
+
     anim:draw(self.images.head[state], self.x - OffX, self.y - OffY)
 
 end

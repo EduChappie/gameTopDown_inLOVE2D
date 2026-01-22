@@ -5,7 +5,7 @@ function camera:new()
     local self = setmetatable({}, camera)
     self.x = 0
     self.y = 0
-    self.scale = 6 -- tamanho do visual
+    self.scale = 5 -- tamanho do visual
 
     return self
 end
@@ -13,9 +13,13 @@ end
 function camera:set()
     love.graphics.push()
     love.graphics.scale(self.scale)
+
+    local px = -self.x + (love.graphics.getWidth() / (2 * self.scale))
+    local py = -self.y + (love.graphics.getHeight() / (2 * self.scale))
+
     love.graphics.translate(
-        -self.x + (love.graphics.getWidth()  / (2 * self.scale)),
-        -self.y + (love.graphics.getHeight() / (2 * self.scale))
+        px-5, -- 5 de marge de erro, pois está um pouco torto comparado com o pesonagem
+        py+5   -- é o offSet padrão
     )
 end
 

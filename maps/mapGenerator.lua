@@ -177,6 +177,7 @@ function mapGenerator:load()
                         bau.y - bau.height, -- não entendi,
                         bau.width,
                         bau.height,
+                        bau.properties.action,
                         bau.properties.raio,
                         bau.properties.item
                     )
@@ -238,9 +239,9 @@ function mapGenerator:draw()
     end
 
     -- DEBUG BAÚS - isso que deixo com o vermelho envolta
-    --for _, c in ipairs(self.chests) do
-        --c:draw()
-    --end
+    for _, c in ipairs(self.chests) do
+        c:draw()
+    end
 end
 
 -- ================================

@@ -5,5 +5,6 @@ function love.conf(t)
     t.window.height = 720
     t.window.icon = nil
     t.window.resizable = false
+    t.window.borderless = false
     t.window.title = "projeto 01"
 end

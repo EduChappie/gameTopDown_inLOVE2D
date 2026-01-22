@@ -1,7 +1,7 @@
 chest = {}
 chest.__index = chest
 
-function chest:new(gid, x, y, w, h, r, item)
+function chest:new(gid, x, y, w, h, action, r, item)
     local self = setmetatable({}, chest)
     self.x = x
     self.y = y
@@ -12,6 +12,7 @@ function chest:new(gid, x, y, w, h, r, item)
     self.visible = true
     self.locked = true
     self.item = item
+    self.action = action
 
     return self
 end
