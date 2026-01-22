@@ -20,11 +20,4 @@ function checkCollision.raio(a, b)
 
 end
 
--- colisão por raio
---function pontoDentroDoCirculo(px, py, cx, cy, raio)
-    --local dx = px - cx
-    --local dy = py - cy
-    --return (dx * dx + dy * dy) <= (raio * raio)
---end
-
 return checkCollision

@@ -177,6 +177,7 @@ function mapGenerator:load()
                         bau.y - bau.height, -- não entendi,
                         bau.width,
                         bau.height,
+                        bau.properties.action,
                         bau.properties.raio,
                         bau.properties.item
                     )

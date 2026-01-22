@@ -35,7 +35,7 @@ function p:new(x, y)
     self.y = y
     self.w = 14
     self.h = 8
-    self.speed = 250
+    self.speed = 50
     self.vx = 0
     self.vy = 0
     self.armed = false
