@@ -153,7 +153,8 @@ function p:draw()
     local OffY = self.h*5
 
     --debug player
-    --love.graphics.rectangle('line', self.x, self.y, self.w, self.h)
+    love.graphics.rectangle('line', self.x, self.y, self.w, self.h)
+    love.graphics.rectangle("fill", self.x, self.y, 2, 2)
 
     anim:draw(self.images.shadow[state], self.x - OffX, self.y - OffY)
 

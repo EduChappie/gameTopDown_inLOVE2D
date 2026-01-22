@@ -91,6 +91,7 @@ function world:update(dt)
             {x = nextX, y = nextY, w = player.w, h = player.h},
             c
         ) then
+            print("E")
             
             -- detectar botão quando ele tiver na colisão com o baú
             function love.keypressed(key)
