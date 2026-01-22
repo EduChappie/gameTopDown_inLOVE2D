@@ -7,6 +7,18 @@ function checkCollision.AB(a, b)
            b.y < a.y + a.h
 end
 
+function checkCollision.raio(a, b)
+    -- primeiro parâmetro é o player
+    -- segundo parâmetro é a entidade ao qual o player interage
+    -- por isso ele tem o raio especifico que ele vai dar
+
+    local dx = a.x - b.x
+    local dy = a.y - b.y
+    local raio = b.raio
+
+    return (dx*dx + dy*dy) <= (raio*raio)
+
+end
 
 -- colisão por raio
 --function pontoDentroDoCirculo(px, py, cx, cy, raio)
