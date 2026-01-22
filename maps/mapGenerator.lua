@@ -238,9 +238,9 @@ function mapGenerator:draw()
     end
 
     -- DEBUG BAÚS - isso que deixo com o vermelho envolta
-    --for _, c in ipairs(self.chests) do
-        --c:draw()
-    --end
+    for _, c in ipairs(self.chests) do
+        c:draw()
+    end
 end
 
 -- ================================

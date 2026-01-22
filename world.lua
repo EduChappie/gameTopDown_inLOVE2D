@@ -85,6 +85,19 @@ function world:update(dt)
         player.y = nextY
     end
 
+    -- COLISÂO PARA INTERAÇÃO
+    for _, c in ipairs(chests) do
+        if checkCollision.raio(
+            {x = nextX, y = nextY, w = player.w, h = player.h},
+            c
+        ) then
+            
+            print("funciona, ta colidindo!!!!")
+        end
+    end
+
+
+    -- configuração da câmera
     cam.x = player.x + player.w /2
     cam.y = player.y + player.h /2
 end

@@ -3,6 +3,7 @@ chest.__index = chest
 
 function chest:new(gid, x, y, w, h, r, item)
     local self = setmetatable({}, chest)
+    self.id
     self.x = x
     self.y = y
     self.w = w

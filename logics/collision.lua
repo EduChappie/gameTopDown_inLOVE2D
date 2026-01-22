@@ -14,7 +14,7 @@ function checkCollision.raio(a, b)
 
     local dx = a.x - b.x
     local dy = a.y - b.y
-    local raio = b.raio
+    local raio = b.r
 
     return (dx*dx + dy*dy) <= (raio*raio)
 
