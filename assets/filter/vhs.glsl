@@ -9,7 +9,7 @@ vec4 effect(vec4 color, Image tex, vec2 texCoord, vec2 screenCoord)
     uv.x += wave;
 
     // Separação RGB
-    float offset = 0.002;
+    float offset = 0;
     float r = Texel(tex, uv + vec2(offset, 0.0)).r;
     float g = Texel(tex, uv).g;
     float b = Texel(tex, uv - vec2(offset, 0.0)).b;

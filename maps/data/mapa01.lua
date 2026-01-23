@@ -48,7 +48,7 @@ return {
           gid = 85,
           visible = true,
           properties = {
-            raio = 13,
+            raio = 14,
             action = "take_weapon",
             item = { 
               name = "Lâmina estrelada",
@@ -72,7 +72,7 @@ return {
           gid = 85,
           visible = true,
           properties = {
-            raio = 13,
+            raio = 14,
             action = "take_item",
             item = {
               name = "Poção de Vida",

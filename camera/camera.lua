@@ -10,6 +10,11 @@ function camera:new()
     return self
 end
 
+function camera:update(player)
+    self.x = player.x + player.w /2
+    self.y = player.y + player.h /2
+end
+
 function camera:set()
     love.graphics.push()
     love.graphics.scale(self.scale)
