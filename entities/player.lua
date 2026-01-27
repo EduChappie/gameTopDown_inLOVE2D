@@ -38,6 +38,7 @@ function p:new(x, y)
     self.speed = 50
     self.vx = 0
     self.vy = 0
+    self.life = 100
     self.armed = false
     self.state = "idle"
     self.direction = "down"
@@ -66,7 +67,7 @@ function p:new(x, y)
             walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk2_sword_back.png")
         }
     }
-    -- grid 32, 32
+    -- grid 64, 64
     self.grid = {
         idle = anim8.newGrid(
             64, 64,
@@ -81,6 +82,8 @@ function p:new(x, y)
     }
 
     -- -animações - provavelmente não vai funcionar, mas eu arrumo depois
+    -- funcionou ksdskdkskd
+    
     self.animations = {
         idle = {},
         walk = {}

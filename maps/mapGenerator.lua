@@ -3,6 +3,7 @@ mapGenerator = {}
 local block = require("objects.blockGenerator")
 local chest = require("objects.chests")
 local mapa = require("maps.data.mapa01")
+local enemie = require("entities.enemies")
 
 -- ================================
 -- TILESET E DIMENSÕES
@@ -29,6 +30,7 @@ local quadCache = {}
 function mapGenerator:load()
     self.blocks = {}
     self.chests = {}
+    self.enemies = {}
 
     -- ================================
     -- 1. CACHE DE QUADS
