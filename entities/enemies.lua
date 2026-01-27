@@ -42,20 +42,28 @@ function enemie:new(x, y, config)
     return self
 end
 
+function enemie:setState(newState)
+    if self.state ~= newState then
+        self.state = newState
+        self.current = self.animations[newState]
+        self.current:gotoFrame(1)
+    end
+end
+
 function enemie:update(dt)
-    self.current = self.animations[self.state]
-    self.current:update(dt)
+    if self.current then
+        self.current:update(dt)
+    end    
 
 end
 
 function enemie:draw()
-    local anim = self.animations[self.state]
-    local state = self.state
 
     -- debug de colisão inimigo
     love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
+    love.graphics.circle("fill", self.x, self.y, 3)
 
-    anim:draw(self.image, self.x, self.y)
+    self.current:draw(self.image, self.x, self.y)
 
 end
 

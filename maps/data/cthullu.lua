@@ -5,16 +5,18 @@ return {
     state = 'idle',
 
     frame = {
-        w = 96,
-        h = 98,
+        w = 192,
+        h = 112,
         ofx = 0,
         ofy = 0,
-        sx = 4,
+        sx = 0,
         sy = 0
     },
 
+    hitb
+
     animation = {
-        idle = { row = 1, frames = '1-15', speed = 0.3 },
+        idle = { row = 1, frames = '1-15', speed = 0.2 },
         walk = { row = 2, frames = '1-12', speed = 0.3 },
         fly = { row = 3, frames = '1-6', speed = 0.3 },
         attack1 = { row = 4, frames = '1-7', speed = 0.3 },

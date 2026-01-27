@@ -64,7 +64,7 @@ function world:draw()
     
     -- filtro de câmeras
     vhs:setOut()
-    penumbra:draw()
+    --penumbra:draw()
 
 end
 
