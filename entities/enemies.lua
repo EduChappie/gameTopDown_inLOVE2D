@@ -9,6 +9,12 @@ function enemie:new(x, y, config)
     self.y = y
     self.w = config.frame.w
     self.h = config.frame.h
+
+    self.hitw = config.hitbox.w
+    self.hith = config.hitbox.h
+    self.hitx = self.x+config.hitbox.x
+    self.hity = self.y+config.hitbox.y
+
     self.direction = config.direction or 'right'
     self.state = config.state or 'idle'
     self.image = love.graphics.newImage("assets/enemies/".. config.image)
@@ -60,10 +66,13 @@ end
 function enemie:draw()
 
     -- debug de colisão inimigo
-    love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
-    love.graphics.circle("fill", self.x, self.y, 3)
+    love.graphics.rectangle("line", self.hitx, self.hity, self.hitw, self.hith)
 
-    self.current:draw(self.image, self.x, self.y)
+    if self.direction == 'left' then
+        self.current:draw(self.image, self.x+self.w, self.y, 0, -1, 1)
+    else
+        self.current:draw(self.image, self.x, self.y)
+    end
 
 end
 
