@@ -4,6 +4,8 @@ return {
     direction = 'left',
     state = 'idle',
 
+    life = 100,
+
     frame = {
         w = 192,
         h = 112,

@@ -1,7 +1,6 @@
 world = {}
 
 require 'entities.player'
-cthullu = require("data.enemies.cthullu")
 
 require 'entities.enemies'
 require 'systems.map.generator'
@@ -22,26 +21,29 @@ function world:load()
     love.graphics.setDefaultFilter("nearest", "nearest") -- código pra limpar pixelart
     cam = camera:new()
 
-    ene = enemie:new(200, 200, cthullu)
-
     player = p:new(100, 100)
     mapGenerator:load()
 
     chests = mapGenerator:getChests()
     blocks = mapGenerator:getBlocks()
-    entities = {}
+    -- pegando valores de todos os inimigos existentes
+    enemies = mapGenerator:getEnemies()
+    entities = {
+        chests,
+        blocks,
+        enemies
+    }
 end
 
 function world:update(dt)
 
     vhs:update(dt)
-    ene:update(dt)
+
+    mapGenerator:update(dt)
+    
     player:update(dt)
 
-    worldCheckCollision:update(dt, player, { -- obejto de entidades, acho que só vai ter duas
-        c = chests,
-        b = blocks
-    })
+    worldCheckCollision:update(dt, player, entities) -- obejto de entidades, acho que só vai ter duas
     -- COLISÂO PARA INTERAÇÃO
     chestInteraction:update(dt, player, chests)
 
@@ -57,14 +59,13 @@ function world:draw()
     cam:set()
 
     mapGenerator:draw()
-    ene:draw()
     player:draw()
 
     cam:unset()
     
     -- filtro de câmeras
     vhs:setOut()
-    --penumbra:draw()
+    penumbra:draw()
 
 end
 

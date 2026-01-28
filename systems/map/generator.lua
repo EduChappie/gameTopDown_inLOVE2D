@@ -3,7 +3,7 @@ mapGenerator = {}
 local block = require("entities.block")
 local chest = require("entities.chests")
 
-local mapa = require("data.mapas.mapa01")
+local mapa = require("data.mapas.mapa01_withEnemie")
 
 local enemie = require("entities.enemies")
 
@@ -191,6 +191,32 @@ function mapGenerator:load()
 
         end
     end
+
+    -- ================================
+    -- 6. LEITURA DOS INIMIGOS (TILE LAYER)
+    -- ================================
+    for _, layer in ipairs(mapa.layers) do
+        if layer.name == "inimigos" then
+
+            for _, n in ipairs(layer.objects) do
+                dados = require("data.enemies.".. n.name)
+                -- requisitando os dados especifico do inimigo que 
+                -- que existe dentro desse determinado mundo.
+                table.insert(
+                    self.enemies,
+                    enemie:new(
+                        n.id,
+                        n.x,
+                        n.y,
+                        dados
+                    )
+                )
+
+            end
+
+        end
+
+    end
     
 end
 
@@ -198,6 +224,11 @@ end
 -- UPDATE
 -- ================================
 function mapGenerator:update(dt)
+
+    -- update de animação para todos os inimigos
+    for _, ene in ipairs(self.enemies) do
+        ene:update(dt)
+    end
 end
 
 -- ================================
@@ -246,6 +277,13 @@ function mapGenerator:draw()
     --for _, c in ipairs(self.chests) do
         --c:draw()
     --end
+
+
+    -- renderização dos inimigos
+    for _, n in ipairs(self.enemies) do
+        -- não precisa cetar invisible o próprio boneco verifica isso
+        n:draw()
+    end
 end
 
 -- ================================
@@ -257,6 +295,10 @@ end
 
 function mapGenerator:getChests()
     return self.chests
+end
+
+function mapGenerator:getEnemies()
+    return self.enemies
 end
 
 return mapGenerator

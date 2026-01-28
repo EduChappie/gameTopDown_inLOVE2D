@@ -41,13 +41,21 @@ return {
           shape = "rectangle",
           x = 48,
           y = 288,
-          width = 16,
-          height = 16,
+          width = 14,
+          height = 10,
+          
           rotation = 0,
           gid = 85,
           visible = true,
           properties = {
-            ["sword"] = "{\n	name: \"Lâmina estrelada\",\n	type: \"weapon\",\n	qtd: 1,\n	damage: 10	\n}"
+            raio = 14,
+            action = "take_weapon",
+            item = { 
+              name = "Lâmina estelar",
+              type = "weapon",
+              qtd = 1, 
+              damage = 10
+            }
           }
         },
         {
@@ -55,15 +63,23 @@ return {
           name = "baú2",
           type = "chest",
           shape = "rectangle",
-          x = 383.333,
-          y = 175.333,
-          width = 16,
-          height = 16,
+          x = 383,
+          y = 175,
+          
+          width = 14,
+          height = 10,
           rotation = 0,
           gid = 85,
           visible = true,
           properties = {
-            ["item"] = "{\n	name = \"Poção de Vida\",\n	type = \"utils\",\n	qtd = 5,\n	cure = 10\n}"
+            raio = 14,
+            action = "take_item",
+            item = {
+              name = "Poção de Vida",
+              type = "utils",	
+              qtd = 5,	
+              cure = 10
+            }
           }
         }
       }
@@ -88,7 +104,7 @@ return {
           type = "inimigo",
           shape = "rectangle",
           x = 450,
-          y = 13,
+          y = 12,
           width = 192,
           height = 112,
           rotation = 0,

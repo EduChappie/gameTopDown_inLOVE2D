@@ -3,17 +3,22 @@ enemie.__index = enemie
 
 anim8 = require('lib.anim8-master.anim8')
 
-function enemie:new(x, y, config)
+function enemie:new(id, x, y, config)
     local self = setmetatable({}, enemie)
-    self.x = x
-    self.y = y
-    self.w = config.frame.w
-    self.h = config.frame.h
+    self.id = id
 
-    self.hitw = config.hitbox.w
-    self.hith = config.hitbox.h
-    self.hitx = self.x+config.hitbox.x
-    self.hity = self.y+config.hitbox.y
+    self.framex = x
+    self.framey = y
+    self.framew = config.frame.w
+    self.frameh = config.frame.h
+
+    self.life = config.life
+    self.visible = true
+
+    self.w = config.hitbox.w  -- valores padrões para hitbox
+    self.h = config.hitbox.h
+    self.x = self.framex+config.hitbox.x
+    self.y = self.framey+config.hitbox.y
 
     self.direction = config.direction or 'right'
     self.state = config.state or 'idle'
@@ -41,6 +46,7 @@ function enemie:new(x, y, config)
     --a aaaaaaaaaaaaaaaaaaaaa
     -- arrumar isso depois atualizo mais, tmnc
     -- arrumei :)
+    -- quebrou de novo :(
 
 
     self.current = self.animations[self.state]
@@ -66,12 +72,14 @@ end
 function enemie:draw()
 
     -- debug de colisão inimigo
-    love.graphics.rectangle("line", self.hitx, self.hity, self.hitw, self.hith)
+    --love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
 
-    if self.direction == 'left' then
-        self.current:draw(self.image, self.x+self.w, self.y, 0, -1, 1)
-    else
-        self.current:draw(self.image, self.x, self.y)
+    if self.visible then
+        if self.direction == 'left' then
+            self.current:draw(self.image, self.framex+self.framew, self.framey, 0, -1, 1)
+        else
+            self.current:draw(self.image, self.framex, self.framey)
+        end
     end
 
 end
