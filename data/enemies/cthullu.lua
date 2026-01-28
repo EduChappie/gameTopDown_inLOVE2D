@@ -1,7 +1,7 @@
 return {
     image = "cthullu_sprites.png",
 
-    direction = 'right',
+    direction = 'left',
     state = 'idle',
 
     frame = {

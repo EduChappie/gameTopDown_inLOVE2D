@@ -40,6 +40,7 @@ function enemie:new(x, y, config)
     -- a porra desse sprite ta errado, vai se foder
     --a aaaaaaaaaaaaaaaaaaaaa
     -- arrumar isso depois atualizo mais, tmnc
+    -- arrumei :)
 
 
     self.current = self.animations[self.state]
