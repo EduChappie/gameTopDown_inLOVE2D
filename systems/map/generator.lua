@@ -5,7 +5,7 @@ local chest = require("entities.chests")
 
 local mapa = require("data.mapas.mapa01_withEnemie")
 
-local enemie = require("entities.enemies")
+local enemie = require("entities.enemies.enemies")
 
 -- ================================
 -- TILESET E DIMENSÕES
@@ -227,7 +227,7 @@ function mapGenerator:update(dt)
 
     -- update de animação para todos os inimigos
     for _, ene in ipairs(self.enemies) do
-        ene:update(dt)
+        ene:update(dt, player, block)
     end
 end
 

@@ -2,6 +2,7 @@ enemie = {}
 enemie.__index = enemie
 
 anim8 = require('lib.anim8-master.anim8')
+require 'entities.enemies.enemies_ia'
 
 function enemie:new(id, x, y, config)
     local self = setmetatable({}, enemie)
@@ -13,6 +14,7 @@ function enemie:new(id, x, y, config)
     self.frameh = config.frame.h
 
     self.life = config.life
+    self.raio = config.ai.raio
     self.visible = true
 
     self.w = config.hitbox.w  -- valores padrões para hitbox
@@ -62,10 +64,27 @@ function enemie:setState(newState)
     end
 end
 
-function enemie:update(dt)
+--function enemyUpdateAI(enemy, player, world, dt)
+--    if enemyCanSeePlayer(enemy, player, world) then
+--        enemy.state = "chase"
+--        enemy:moveTowards(player, dt)
+--    else
+--        enemy.state = "idle"
+--        enemy:idleBehavior(dt)
+--    end
+--end
+
+function enemie:update(dt, player, world)
     if self.current then
         self.current:update(dt)
-    end    
+    end
+
+    if enemyCanSeePlayer(self, player, world, dt) then
+        self:setState("fly")
+        print("inimigo te encontrou e vai te alcançar")
+    else
+        self:setState("idle")
+    end
 
 end
 
@@ -73,6 +92,7 @@ function enemie:draw()
 
     -- debug de colisão inimigo
     --love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
+
 
     if self.visible then
         if self.direction == 'left' then

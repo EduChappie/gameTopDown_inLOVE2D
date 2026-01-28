@@ -2,7 +2,7 @@ world = {}
 
 require 'entities.player'
 
-require 'entities.enemies'
+require 'entities.enemies.enemies'
 require 'systems.map.generator'
 
 require 'core.render.penumbra'
@@ -43,6 +43,7 @@ function world:update(dt)
     
     player:update(dt)
 
+    -- COLISÃO DE PAREDE
     worldCheckCollision:update(dt, player, entities) -- obejto de entidades, acho que só vai ter duas
     -- COLISÂO PARA INTERAÇÃO
     chestInteraction:update(dt, player, chests)
@@ -54,7 +55,7 @@ end
 
 function world:draw()
 
-    vhs:setIn()
+    --vhs:setIn()
 
     cam:set()
 
@@ -64,8 +65,8 @@ function world:draw()
     cam:unset()
     
     -- filtro de câmeras
-    vhs:setOut()
-    penumbra:draw()
+    --vhs:setOut()
+    --penumbra:draw()
 
 end
 

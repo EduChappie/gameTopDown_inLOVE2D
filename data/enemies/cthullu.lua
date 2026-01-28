@@ -4,6 +4,10 @@ return {
     direction = 'left',
     state = 'idle',
 
+    ai = {
+        raio = 120
+    },
+
     life = 100,
 
     frame = {
@@ -16,9 +20,9 @@ return {
     },
 
     hitbox = {
-        x = 62,
+        x = 70,
         y = 41,
-        w = 66,
+        w = 58,
         h = 56
     },
 
