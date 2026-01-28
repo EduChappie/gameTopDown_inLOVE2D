@@ -17,7 +17,7 @@ function enemie:new(x, y, config)
 
     self.direction = config.direction or 'right'
     self.state = config.state or 'idle'
-    self.image = love.graphics.newImage("assets/enemies/".. config.image)
+    self.image = love.graphics.newImage("assets/image/enemies/".. config.image)
 
     -- pegando o grid do sprite do inimigo
     self.grid = anim8.newGrid(
@@ -25,8 +25,7 @@ function enemie:new(x, y, config)
         self.image:getWidth(),
         self.image:getHeight(),
         config.frame.ofx, config.frame.ofy,
-        config.frame.sx,
-        config.frame.sy
+        config.frame.sx, config.frame.sy
     )
 
     self.animations = {}

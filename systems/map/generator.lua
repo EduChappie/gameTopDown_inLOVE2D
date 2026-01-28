@@ -1,14 +1,16 @@
 mapGenerator = {}
 
-local block = require("objects.blockGenerator")
-local chest = require("objects.chests")
-local mapa = require("maps.data.mapa01")
+local block = require("entities.block")
+local chest = require("entities.chests")
+
+local mapa = require("data.mapas.mapa01")
+
 local enemie = require("entities.enemies")
 
 -- ================================
 -- TILESET E DIMENSÕES
 -- ================================
-local tileset = love.graphics.newImage("assets/mapas/Dungeon_Tileset.png")
+local tileset = love.graphics.newImage("assets/image/tiles/Dungeon_Tileset.png")
 tileset:setFilter("nearest", "nearest")
 
 local tileW = mapa.tilewidth

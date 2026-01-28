@@ -1,18 +1,18 @@
 world = {}
 
 require 'entities.player'
-cthullu = require("maps.data.cthullu")
+cthullu = require("data.enemies.cthullu")
 
 require 'entities.enemies'
-require 'maps.mapGenerator'
+require 'systems.map.generator'
 
-require 'camera.filtros.penumbra'
-require 'camera.filtros.vhs'
+require 'core.render.penumbra'
+require 'core.render.vhs'
 
-require 'logics.worldLogics.chestInteraction'
-require 'logics.worldLogics.collision'
+require 'systems.collision.interaction'
+require 'systems.collision.collision'
 
-camera = require('camera.camera')
+camera = require('core.camera.camera')
 
 function world:load()
 

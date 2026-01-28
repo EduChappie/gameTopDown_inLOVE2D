@@ -47,24 +47,24 @@ function p:new(x, y)
     -- imagens
     self.images = {
         body = {
-            idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle3_body.png"),
-            walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk3_body.png")
+            idle = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Idle3_body.png"),
+            walk = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Walk3_body.png")
         },
         head = {
-            idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle5_head.png"),
-            walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk5_head.png")
+            idle = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Idle5_head.png"),
+            walk = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Walk5_head.png")
         },
         shadow = {
-            idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle1_shadow.png"),
-            walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk1_shadow.png")
+            idle = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Idle1_shadow.png"),
+            walk = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Walk1_shadow.png")
         },
         sword_front = {
-            idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle4_sword_front.png"),
-            walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk4_sword_front.png")
+            idle = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Idle4_sword_front.png"),
+            walk = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Walk4_sword_front.png")
         },
         sword_back = {
-            idle = love.graphics.newImage("assets/player/Sword/Parts/Sword_Idle2_sword_back.png"),
-            walk = love.graphics.newImage("assets/player/Sword/Parts/Sword_Walk2_sword_back.png")
+            idle = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Idle2_sword_back.png"),
+            walk = love.graphics.newImage("assets/image/player/Sword/Parts/Sword_Walk2_sword_back.png")
         }
     }
     -- grid 64, 64

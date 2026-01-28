@@ -51,7 +51,7 @@ return {
             raio = 14,
             action = "take_weapon",
             item = { 
-              name = "Lâmina estrelada",
+              name = "Lâmina estelar",
               type = "weapon",
               qtd = 1, 
               damage = 10

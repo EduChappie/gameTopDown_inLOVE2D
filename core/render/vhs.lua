@@ -4,7 +4,7 @@ function vhs:load()
     screenW, screenH = love.graphics.getDimensions()
     self.canvas = love.graphics.newCanvas(screenW, screenH)
 
-    self.shader = love.graphics.newShader("assets/filter/vhs.glsl")
+    self.shader = love.graphics.newShader("assets/shaders/vhs.glsl")
     self.enabled = true
     self.time = 0
 end

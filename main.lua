@@ -1,4 +1,4 @@
-require 'world'
+require 'world.world'
 
 function love.load()
     world:load()

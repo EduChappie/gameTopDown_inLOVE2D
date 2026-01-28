@@ -1,6 +1,6 @@
 worldCheckCollision = {}
 
-require 'logics.collision'
+require 'systems.collision.physics'
 
 function worldCheckCollision:update(dt, player, entities)
     local nextX = player.x + player.vx * player.speed * dt

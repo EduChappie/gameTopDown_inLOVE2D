@@ -1,7 +1,7 @@
 penumbra = {}
 
 function penumbra:load()
-    img = love.graphics.newImage("assets/filter/image/penumbra.png")
+    img = love.graphics.newImage("assets/image/filtros/penumbra.png")
 end
 
 function penumbra:draw()
